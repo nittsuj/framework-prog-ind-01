@@ -1,58 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portal Mahasiswa ITS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Laravel untuk Tugas Mandiri Sandbox Routing. Aplikasi ini menyediakan portal mahasiswa ITS dengan halaman profil, kalkulator IPK dua semester, dan presentasi ide proyek Agentic AI untuk verifikasi keselamatan laboratorium.
 
-## About Laravel
+## Fitur
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Halaman beranda dengan sambutan ITS dan profil mahasiswa interaktif.
+- Kartu fitur beranda yang dapat diklik untuk membuka halaman terkait.
+- Detail profil mahasiswa berdasarkan NRP tepat 10 digit.
+- Kalkulator jumlah dan rata-rata IP dua semester.
+- Halaman proyek Agentic AI berbasis MCP Server untuk verifikasi SOP K3 laboratorium.
+- Halaman fallback 404 dengan navigasi kembali ke beranda.
+- UI responsive berbasis Bootstrap 5, Bootstrap Icons, dan styling custom melalui Vite.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Routing
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Method | URL | Nama Route | Keterangan |
+| --- | --- | --- | --- |
+| GET | `/` | `home` | Beranda portal mahasiswa ITS |
+| GET | `/dashboard/mahasiswa/{nrp}` | `dashboard.mahasiswa` | Profil mahasiswa, NRP wajib 10 digit |
+| GET | `/dashboard/hitung-ipk` | `dashboard.hitung-ipk.form` | Form input IP semester 1 dan 2 |
+| GET | `/dashboard/hitung-ipk/{ip1}/{ip2}` | `dashboard.hitung-ipk` | Hasil jumlah dan rata-rata IP |
+| GET | `/dashboard/agent/{tema?}` | `dashboard.agent` | Halaman proyek Agentic AI dengan tema opsional |
+| ANY | URL tidak dikenal | `fallback` | Halaman 404 |
 
-## Learning Laravel
+Seluruh route aplikasi didelegasikan ke `App\Http\Controllers\PageController`. Tidak ada closure untuk merender tampilan di `routes/web.php`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Teknologi
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP 8.5+
+- Laravel 13
+- SQLite
+- Bootstrap 5.3 melalui CDN
+- Bootstrap Icons
+- Vite dan Tailwind CSS untuk asset custom
+- PHPUnit
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Persiapan
 
-## Agentic Development
+Pastikan PHP, Composer, dan Node.js sudah terpasang. Aktifkan ekstensi SQLite PHP:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```ini
+extension=pdo_sqlite
+extension=sqlite3
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Buat file database SQLite jika belum tersedia:
 
-## Contributing
+```powershell
+New-Item database/database.sqlite -ItemType File
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Install dependency backend dan frontend:
 
-## Code of Conduct
+```powershell
+composer install
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Salin konfigurasi environment jika `.env` belum tersedia:
 
-## Security Vulnerabilities
+```powershell
+Copy-Item .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Pastikan konfigurasi lokal menggunakan SQLite dan file session:
 
-## License
+```dotenv
+DB_CONNECTION=sqlite
+SESSION_DRIVER=file
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Jalankan migrasi dan build asset:
+
+```powershell
+php artisan migrate
+npm run build
+```
+
+## Menjalankan Aplikasi
+
+Jalankan server Laravel:
+
+```powershell
+php artisan serve
+```
+
+Buka [http://localhost:8000](http://localhost:8000).
+
+Untuk pengembangan frontend dengan hot reload:
+
+```powershell
+npm run dev
+```
+
+## Validasi
+
+Perintah yang digunakan untuk memeriksa aplikasi:
+
+```powershell
+php artisan test
+php artisan route:list --except-vendor
+php artisan view:cache
+npm run build
+```
+
+## Struktur Utama
+
+```text
+app/Http/Controllers/PageController.php  # Controller seluruh halaman
+resources/views/layouts/app.blade.php    # Layout Bootstrap bersama
+resources/views/pages/                   # View setiap halaman
+resources/css/app.css                    # Styling custom portal ITS
+routes/web.php                           # Named routes dan route constraints
+```
