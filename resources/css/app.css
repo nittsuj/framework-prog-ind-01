@@ -7,3 +7,121 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+:root {
+    --its-navy: #102a43;
+    --its-blue: #1565c0;
+    --its-gold: #f4b942;
+    --its-ink: #172b4d;
+    --its-mist: #f4f7fb;
+}
+
+body {
+    background: var(--its-mist);
+    color: var(--its-ink);
+    font-family: 'Instrument Sans', sans-serif;
+}
+
+.site-navbar {
+    background: linear-gradient(110deg, var(--its-navy), #1d4e89);
+    box-shadow: 0 3px 18px rgba(16, 42, 67, .16);
+}
+
+.brand-mark, .profile-icon, .avatar-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+    color: var(--its-navy);
+    background: var(--its-gold);
+}
+
+.brand-dot, .text-accent, .eyebrow, .mini-card i, .feature-number {
+    color: var(--its-gold);
+}
+
+.hero-section {
+    background: radial-gradient(circle at 80% 20%, rgba(244, 185, 66, .18), transparent 28%), linear-gradient(135deg, #f4f7fb 0%, #e6effa 100%);
+}
+
+.hero-section h1, .page-heading h1 {
+    color: var(--its-navy);
+    letter-spacing: -.03em;
+}
+
+.eyebrow {
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+}
+
+.eyebrow.light { color: var(--its-gold); }
+
+.profile-panel, .content-panel, .side-panel, .mini-card, .cta-panel {
+    border: 1px solid rgba(16, 42, 67, .08);
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(16, 42, 67, .08);
+}
+
+.profile-panel {
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.profile-panel::before {
+    position: absolute;
+    top: -90px;
+    right: -70px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(244, 185, 66, .2);
+    content: '';
+}
+
+.profile-icon {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 2rem;
+    color: #fff;
+    background: var(--its-blue);
+    font-size: 1.7rem;
+}
+
+.motivation-note, .info-tile, .score-card {
+    border-radius: .75rem;
+    background: #edf4fc;
+    padding: 1rem;
+}
+
+.mini-card { padding: 1.5rem; color: var(--its-ink); transition: transform .2s ease, box-shadow .2s ease; }
+.mini-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(16, 42, 67, .13); }
+.mini-card i { font-size: 1.65rem; }
+.card-link { display: block; color: var(--its-blue); font-size: .85rem; font-weight: 700; }
+
+.page-heading { background: #fff; border-bottom: 1px solid rgba(16, 42, 67, .08); }
+.avatar-circle { width: 54px; height: 54px; color: #fff; background: var(--its-blue); font-weight: 700; font-size: 1.3rem; }
+.info-tile span, .score-card span, .theme-chip span { display: block; color: #6c7a89; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.info-tile strong, .score-card strong { display: block; margin-top: .35rem; font-size: 1.1rem; }
+.result-panel { border-radius: 1rem; background: linear-gradient(135deg, #eaf3ff, #f8fbff); padding: 2rem; }
+.calculator-icon { display: inline-flex; align-items: center; justify-content: center; width: 58px; height: 58px; border-radius: .85rem; color: var(--its-navy); background: var(--its-gold); font-size: 1.5rem; }
+.calculator-shell .form-control { border-color: #d5e0ec; }
+.calculator-shell .form-control:focus { border-color: var(--its-blue); box-shadow: 0 0 0 .25rem rgba(21, 101, 192, .15); }
+
+.agent-hero { color: #fff; background: linear-gradient(120deg, var(--its-navy), #1d4e89); }
+.agent-hero h1 { max-width: 850px; letter-spacing: -.03em; }
+.theme-chip { border: 1px solid rgba(255, 255, 255, .25); border-radius: .75rem; padding: 1rem; background: rgba(255, 255, 255, .1); }
+.theme-chip strong { display: block; margin-top: .35rem; color: var(--its-gold); }
+.feature-list { border-top: 1px solid rgba(16, 42, 67, .12); }
+.feature-item { display: flex; gap: 1rem; border-bottom: 1px solid rgba(16, 42, 67, .12); padding: 1.25rem 0; }
+.feature-number { min-width: 2.5rem; font-weight: 800; }
+.error-page { min-height: 70vh; }
+.error-number { color: var(--its-blue); font-size: clamp(6rem, 18vw, 12rem); font-weight: 800; line-height: .9; letter-spacing: -.08em; }
+.site-footer { color: #c8d7e8; background: var(--its-navy); }
