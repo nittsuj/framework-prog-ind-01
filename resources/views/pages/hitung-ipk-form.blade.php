@@ -17,15 +17,15 @@
                 <div class="calculator-icon mb-4"><i class="bi bi-calculator"></i></div>
                 <h2 class="h3 fw-bold">Nilai akademik</h2>
                 <p class="text-secondary mb-4">Gunakan angka 0 sampai 4 dengan maksimal dua angka desimal.</p>
-                <form action="{{ url('/dashboard/hitung-ipk') }}" method="GET" onsubmit="event.preventDefault(); window.location.href = this.action + '/' + encodeURIComponent(this.ip1.value) + '/' + encodeURIComponent(this.ip2.value);">
+                <form action="{{ url('/hitung-ipk') }}" method="GET" onsubmit="event.preventDefault(); window.location.href = this.action + '/' + encodeURIComponent(this.ipk1.value) + '/' + encodeURIComponent(this.ipk2.value);">
                     <div class="row g-4">
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold" for="ip1">IP Semester 1</label>
-                            <input class="form-control form-control-lg" id="ip1" name="ip1" type="number" min="0" max="4" step="0.01" placeholder="Contoh: 3.75" required>
+                            <label class="form-label fw-semibold" for="ipk1">IP Semester 1</label>
+                            <input class="form-control form-control-lg" id="ipk1" name="ipk1" type="number" min="0" max="4" step="0.01" placeholder="Contoh: 3.75" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold" for="ip2">IP Semester 2</label>
-                            <input class="form-control form-control-lg" id="ip2" name="ip2" type="number" min="0" max="4" step="0.01" placeholder="Contoh: 3.90" required>
+                            <label class="form-label fw-semibold" for="ipk2">IP Semester 2</label>
+                            <input class="form-control form-control-lg" id="ipk2" name="ipk2" type="number" min="0" max="4" step="0.01" placeholder="Contoh: 3.90" required>
                         </div>
                     </div>
                     <div class="alert alert-light border mt-4 mb-4"><i class="bi bi-lightbulb text-warning me-2"></i>Rata-rata akan dihitung dengan rumus <strong>(IP Semester 1 + IP Semester 2) / 2</strong>.</div>

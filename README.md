@@ -17,10 +17,10 @@ Aplikasi Laravel untuk Tugas Mandiri Sandbox Routing. Aplikasi ini menyediakan p
 | Method | URL | Nama Route | Keterangan |
 | --- | --- | --- | --- |
 | GET | `/` | `home` | Beranda portal mahasiswa ITS |
-| GET | `/dashboard/mahasiswa/{nrp}` | `dashboard.mahasiswa` | Profil mahasiswa, NRP wajib 10 digit |
-| GET | `/dashboard/hitung-ipk` | `dashboard.hitung-ipk.form` | Form input IP semester 1 dan 2 |
-| GET | `/dashboard/hitung-ipk/{ip1}/{ip2}` | `dashboard.hitung-ipk` | Hasil jumlah dan rata-rata IP |
-| GET | `/dashboard/agent/{tema?}` | `dashboard.agent` | Halaman proyek Agentic AI dengan tema opsional |
+| GET | `/mahasiswa/{nrp}` | `mahasiswa` | Profil mahasiswa, NRP wajib 10 digit |
+| GET | `/hitung-ipk` | `hitung-ipk.form` | Form input IP semester 1 dan 2 |
+| GET | `/hitung-ipk/{ipk1}/{ipk2}` | `hitung-ipk` | Hasil jumlah dan rata-rata IPK |
+| GET | `/agent/{tema?}` | `agent` | Halaman proyek Agentic AI dengan tema opsional |
 | ANY | URL tidak dikenal | `fallback` | Halaman 404 |
 
 Seluruh route aplikasi didelegasikan ke `App\Http\Controllers\PageController`. Tidak ada closure untuk merender tampilan di `routes/web.php`.

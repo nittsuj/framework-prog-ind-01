@@ -24,9 +24,9 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.mahasiswa', '5025211001') }}">Profil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.hitung-ipk', ['ip1' => '3.75', 'ip2' => '3.90']) }}">Kalkulator IPK</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-sm btn-warning fw-semibold px-3" href="{{ route('dashboard.agent') }}"><i class="bi bi-cpu me-1"></i> Agentic AI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('mahasiswa', '5025241234') }}">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('hitung-ipk.form') }}">Kalkulator IPK</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-sm btn-warning fw-semibold px-3" href="{{ route('agent') }}"><i class="bi bi-cpu me-1"></i> Agentic AI</a></li>
                 </ul>
             </div>
         </div>

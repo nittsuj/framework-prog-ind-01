@@ -6,14 +6,24 @@ use Illuminate\Http\Response;
 
 class PageController extends Controller
 {
+    private const STUDENT_NAME = 'Justin Valentino';
+
+    private const STUDENT_NRP = '5025241234';
+
     public function home(): Response
     {
-        return response()->view('pages.home');
+        return response()->view('pages.home', [
+            'studentName' => self::STUDENT_NAME,
+            'studentNrp' => self::STUDENT_NRP,
+        ]);
     }
 
     public function mahasiswa(string $nrp): Response
     {
-        return response()->view('pages.mahasiswa', compact('nrp'));
+        return response()->view('pages.mahasiswa', [
+            'nrp' => $nrp,
+            'studentName' => self::STUDENT_NAME,
+        ]);
     }
 
     public function hitungIpkForm(): Response
@@ -21,16 +31,16 @@ class PageController extends Controller
         return response()->view('pages.hitung-ipk-form');
     }
 
-    public function hitungIpk(string $ip1, string $ip2): Response
+    public function hitungIpk(string $ipk1, string $ipk2): Response
     {
-        $semesterPertama = (float) $ip1;
-        $semesterKedua = (float) $ip2;
+        $semesterPertama = (float) $ipk1;
+        $semesterKedua = (float) $ipk2;
         $jumlah = $semesterPertama + $semesterKedua;
         $rataRata = $jumlah / 2;
 
         return response()->view('pages.hitung-ipk', compact(
-            'ip1',
-            'ip2',
+            'ipk1',
+            'ipk2',
             'jumlah',
             'rataRata',
         ));
